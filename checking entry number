@@ -1,0 +1,16 @@
+var fs = require("fs-extra");
+var entry2name_file= (process.env.NODE_ENV=="development")?".\database/name_database":"C:\Users\BALA JI\Desktop\atd\name_database";
+var entry2name_db = JSON.parse(fs.readFileSync(entry2name_file));
+function get_name(entry_entered){
+  if(entry_entered in entry2name_db){
+    var temp = entry2name_db[entry_entered];
+    return temp;
+  }
+  else{
+    return undefined;
+
+  }
+}
+module.exports = {
+	get_name: get_name;
+	};
